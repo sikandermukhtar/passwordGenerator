@@ -4,7 +4,7 @@ import {useCallback, useEffect, useState} from "react";
 
 function App() {
 
-    const [password, setPassword] : string = useState("");
+    const [password, setPassword] = useState("");
     const [length, setLength] = useState(8)
     const [isNumbersAllowed, setIsNumbersAllowed] = useState(true);
     const [isSpecialCharacterAllowed, setIsSpecialCharacterAllowed] = useState(false);
