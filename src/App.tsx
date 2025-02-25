@@ -4,16 +4,13 @@ import {useCallback, useEffect, useState} from "react";
 
 function App() {
 
-    const [password, setPassword] = useState("");
-    const [length, setLength] = useState(8)
-    const [isNumbersAllowed, setIsNumbersAllowed] = useState(true);
-    const [isSpecialCharacterAllowed, setIsSpecialCharacterAllowed] = useState(false);
+    const [password, setPassword] = useState<string>("")
+    const [length, setLength] = useState<number>(8)
+    const [isNumbersAllowed, setIsNumbersAllowed] = useState<boolean>(true);
+    const [isSpecialCharacterAllowed, setIsSpecialCharacterAllowed] = useState<boolean>(false);
 
     const generatePassword = useCallback(() => {
-        if(length < 6 && length > 20){
-            setLength(8);
-            console.log("You can only set length ")
-        }
+
         let pass = ""
         let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
         if(isNumbersAllowed){
@@ -32,7 +29,7 @@ function App() {
 
     useEffect(() => {
         generatePassword();
-    }, [length, isNumbersAllowed, isSpecialCharacterAllowed]);
+    }, [length, isNumbersAllowed, isSpecialCharacterAllowed, generatePassword]);
 
   return(
       <div className="w-full h-screen">
@@ -59,7 +56,7 @@ function App() {
               <div className="flex flex-col md:flex-row gap-6">
                   <div className="flex flex-row gap-1 items-center">
                       <input
-                          defaultChecked={isNumbersAllowed}
+                          checked={isNumbersAllowed}
                           type="checkbox"
                           onChange={(e) => setIsNumbersAllowed(e.target.checked)}
                       />
@@ -67,7 +64,7 @@ function App() {
                   </div>
                   <div className="flex flex-row  gap-1 items-center">
                       <input
-                          defaultChecked={isSpecialCharacterAllowed}
+                          checked={isSpecialCharacterAllowed}
                           type="checkbox"
                           onChange={(e) => setIsSpecialCharacterAllowed(e.target.checked)}
                       />
